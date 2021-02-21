@@ -37,13 +37,13 @@ Note: **I don't recommend to build it as it is, because of a few known issues.**
 * microSD card 32GB
 * plexi laser cutted enclousre 
 
-## RPi Setup
+## RPi Setup (required)
 * Follow instruction to [flash SD card with Ubuntu Serwer 20.04 and configure WiFi without monitor](https://roboticsbackend.com/install-ubuntu-on-raspberry-pi-without-monitor/)
 * Clone this repo to the user home directory
 * Setup [passwordless sudo](https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/)
 * Install `avahi` and change hostname, so your RPi will be avaliable in the network as `desk.local` with mDNS:
 ``` bash
-$ sudo apt-get install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan
+$ sudo apt-get install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan --yes
 $ sudo vim /etc/hostname 
 ```
 * Give user non-sudo access to GPIOs and I2Cs devices:
@@ -68,9 +68,13 @@ $ sudo systemctl reload nginx
 ``` bash
 $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 ```
+* Restart RPi to apply above changes:
+``` bash
+$ sudo shutdown -r now
+```
 
 
-## Optional desktop setup
+## Development setup on remote desktop
 We are gonna setup you desktop to easlily work with the code on the remote RPi. That will be very usefull if you want to develop project code. **Bellow comands and instructions should be executed on your desktop (not RPi!).** 
 
 ### Easy SSH access

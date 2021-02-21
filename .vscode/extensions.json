@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "bungcip.better-toml",
+        "dpkristensen-garmin.udev-rules"
+    ]
+}
