@@ -1,0 +1,253 @@
+
+/* source https://codepen.io/ycpand/pen/Ejzdqy */
+.display {
+    --bg-color: #070707;
+    --border-color: red;
+    /* --digits-color: var(--main-font-color); */
+    --digits-color: red;
+    --d-hight: 3.3px;
+    --d-width: calc( var(--d-hight) * 5 );
+    --d-hight-half: calc( var(--d-hight) / 2 );
+    --extra-hight: calc( var(--d-hight)*-1 );
+    --gap: calc( var(--d-hight) / 2 );
+    --first-top: calc( var(--gap) + var(--d-hight) );
+    --second-top: calc(var(--first-top) + var(--d-width) + var(--d-hight) + var(--first-top));
+    --third-top: calc(var(--first-top) + calc(var(--d-width)*2) + var(--d-hight) + var(--first-top) + var(--gap));
+    --middle-top: calc(var(--first-top) + var(--d-width) + calc(var(--first-top) / 2));
+    --d-left:  calc( calc(var(--gap) + var(--d-hight))*-1 );
+    --d-right: calc( var(--gap) + var(--d-width) );
+    background:#000;
+    padding-right: calc(var(--d-hight)*1);
+    padding-bottom: 0;
+    box-sizing: border-box;
+    border: 1px solid #111;
+    /* margin-top: 20px; */
+    position: relative;
+    top: 7px;
+    /* padding-top: calc(var(--d-hight)*4);
+    
+    padding-bottom: calc(var(--d-hight)*2);
+    padding-left: calc(var(--d-hight)*4); */
+    user-select: none;
+}
+
+.display * {
+    user-select: none;
+}
+
+.display :is(.d1, .d2, .d3, .d4, .d5, .d6, .d7, .dot) {
+    position: absolute;
+    display: block;
+    background: var(--digits-color);
+    opacity: 1;
+    transition: opacity 0.1s ease-out;
+}
+
+
+.display :is(.d1, .d2, .d3, .d4, .d5, .d6, .d7):before, 
+.display :is(.d1, .d2, .d3, .d4, .d5, .d6, .d7):after { 
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;  
+}
+
+.display div {
+    position: relative;
+    width: calc( var(--d-width) * 1.5 );
+    height: calc( var(--d-hight) * 16 );
+    /* width: calc( var(--d-width) * 2.5 );
+    height: calc( var(--d-hight) * 20 ); */
+    /* padding: calc( var(--d-width) * 2 ) calc( var(--d-width) * 0.5 ); */
+    /* box-sizing: border-box; */
+    display: inline-block;
+    background: var(--bg-color);
+     border-style: solid;
+    border-color: var(--bg-color);
+   border-left-width: calc( var(--d-width) * 1.15);
+    border-right-width: calc( var(--d-width) * 0.6);
+    border-top-width: calc( var(--d-width) * 0.7);
+    border-bottom-width: calc( var(--d-width) * 0.5); 
+    margin: 0 -3px -4px 0;
+    /* border-right: 1px solid #000; */
+    /* margin: 0 calc( var(--d-width) * 0.6); */
+    /* border: 1px solid var(--border-color); */
+}
+
+
+.display .d1 {
+    width: var(--d-width);
+    height: var(--d-hight);
+}
+
+.display .d1:before {
+    left: var(--extra-hight);
+    border-width: 0 var(--d-hight) var(--d-hight) 0; 
+    border-color: transparent var(--digits-color) transparent transparent;
+}
+
+.display .d1:after {
+    right: var(--extra-hight);
+    border-width: var(--d-hight) var(--d-hight) 0 0; 
+    border-color: var(--digits-color) transparent transparent transparent;
+}
+
+.display .d2 {
+    left: var(--d-left);
+    top: var(--first-top);
+    width: var(--d-hight);
+    height: var(--d-width);
+}
+
+.display .d2:before {
+    top: var(--extra-hight);
+    border-width: var(--d-hight) 0 0 var(--d-hight); 
+    border-color: transparent transparent transparent var(--digits-color);
+}
+
+.display .d2:after {
+    bottom: var(--extra-hight);
+    border-width: var(--d-hight) var(--d-hight) 0 0; 
+    border-color: var(--digits-color) transparent transparent transparent;
+}
+
+.display .d3 {
+    left: var(--d-right);
+    top: var(--first-top);
+    width: var(--d-hight);
+    height: var(--d-width);
+}
+
+.display .d3:before {
+    top: var(--extra-hight);
+    border-width: 0 0 var(--d-hight) var(--d-hight); 
+    border-color: transparent transparent var(--digits-color) transparent;
+}
+
+.display .d3:after {
+    bottom: var(--extra-hight);
+    border-width: 0 var(--d-hight) var(--d-hight) 0; 
+    border-color: transparent var(--digits-color) transparent transparent;  
+}
+
+.display .d4 {
+    left: var(--d-left);
+    top: var(--second-top);
+    width: var(--d-hight);
+    height: var(--d-width);
+}
+
+.display .d4:before {
+    top: var(--extra-hight);
+    border-width: var(--d-hight) 0 0 var(--d-hight); 
+    border-color: transparent transparent transparent var(--digits-color);
+}
+
+.display .d4:after {
+    bottom: var(--extra-hight);
+    border-width: var(--d-hight) var(--d-hight) 0 0; 
+    border-color: var(--digits-color) transparent transparent transparent;
+}
+
+.display .d5 {  
+    left: var(--d-right);
+    top: var(--second-top);
+    width: var(--d-hight);
+    height: var(--d-width);
+}
+
+.display .d5:before {
+    top: var(--extra-hight);
+    border-width: 0 0 var(--d-hight) var(--d-hight); 
+    border-color: transparent transparent var(--digits-color) transparent;
+}
+
+.display .d5:after { 
+    bottom: var(--extra-hight);
+    border-width: 0 var(--d-hight) var(--d-hight) 0; 
+    border-color: transparent var(--digits-color) transparent transparent;  
+}
+
+.display .d6 {
+    top: var(--middle-top);
+    width: var(--d-width);
+    height: var(--d-hight);
+}
+
+.display .d6:before {  
+    left: var(--extra-hight);
+    border-width: var(--d-hight-half) var(--d-hight) var(--d-hight-half) 0; 
+    border-color: transparent var(--digits-color) transparent transparent;
+}
+
+.display .d6:after {
+    right: var(--extra-hight);
+    border-width: var(--d-hight-half) 0 var(--d-hight-half) var(--d-hight); 
+    border-color: transparent transparent transparent var(--digits-color);
+}
+
+.display .d7 {
+    top: var(--third-top);
+    width: var(--d-width);
+    height: var(--d-hight);
+}
+
+.display .d7:before {
+    left: var(--extra-hight);
+    border-width: 0 0 var(--d-hight) var(--d-hight); 
+    border-color: transparent transparent var(--digits-color) transparent;
+}
+
+.display .d7:after {
+    right: var(--extra-hight);
+    border-width: var(--d-hight) 0 0 var(--d-hight); 
+    border-color: transparent transparent transparent var(--digits-color);
+}
+
+.display .dot {
+    left: calc(var(--d-right) + var(--d-hight)*2);
+    top: var(--third-top);
+    width: calc(var(--d-hight)*1.5);
+    height: calc(var(--d-hight)*1.5);
+}
+
+.display div:not([class^="digit"]),
+.display .digit-0 :is(.d6),
+.display .digit-1 :is(.d1, .d2, .d4, .d6, .d7),
+.display .digit-2 :is(.d2, .d5),
+.display .digit-3 :is(.d2, .d4),
+.display .digit-4 :is(.d1, .d4, .d7),
+.display .digit-5 :is(.d3, .d4),
+.display .digit-6 :is(.d3), /* .d7 */
+.display .digit-7 :is(.d2, .d4, .d6, .d7),
+.display .digit-8 :is(.d4), /* .d7 */ 
+.display :is(.dot) { 
+    opacity: 0.15;
+    transition: opacity 0.2s ease-in;
+}
+
+.display > div:nth-child(1) .d1 { filter: brightness(1.2); }
+.display > div:nth-child(1) .d2 { filter: brightness(1); }
+.display > div:nth-child(1) .d3 { filter: brightness(0.8); }
+.display > div:nth-child(1) .d4 { filter: brightness(0.8); }
+.display > div:nth-child(1) .d5 { filter: brightness(1.2); }
+.display > div:nth-child(1) .d6 { filter: brightness(1); }
+.display > div:nth-child(1) .d7 { filter: brightness(0.8); }
+
+.display > div:nth-child(2) .d1 { filter: brightness(0.8); }
+.display > div:nth-child(2) .d2 { filter: brightness(1.3); }
+.display > div:nth-child(2) .d3 { filter: brightness(0.8); }
+.display > div:nth-child(2) .d4 { filter: brightness(0.8); }
+.display > div:nth-child(2) .d5 { filter: brightness(1.1); }
+.display > div:nth-child(2) .d6 { filter: brightness(0.8); }
+.display > div:nth-child(2) .d7 { filter: brightness(1); }
+
+.display > div:nth-child(3) .d1 { filter: brightness(1); }
+.display > div:nth-child(3) .d2 { filter: brightness(1.2); }
+.display > div:nth-child(3) .d3 { filter: brightness(0.8); }
+.display > div:nth-child(3) .d4 { filter: brightness(0.8); }
+.display > div:nth-child(3) .d5 { filter: brightness(1.2); }
+.display > div:nth-child(3) .d6 { filter: brightness(1); }
+.display > div:nth-child(3) .d7 { filter: brightness(0.9); }
