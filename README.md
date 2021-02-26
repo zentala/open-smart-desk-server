@@ -73,6 +73,11 @@ $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-po
 $ sudo shutdown -r now
 ```
 
+## Project setup
+``` bash
+$ cd ~/open-smart-desk/
+$ poetry install 
+```
 
 ## Development setup on remote desktop
 We are gonna setup you desktop to easlily work with the code on the remote RPi. That will be very usefull if you want to develop project code. **Bellow comands and instructions should be executed on your desktop (not RPi!).** 

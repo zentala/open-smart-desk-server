@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "smart-desk"
+version = "0.1.0"
+description = "Smart height-adjustable desk server"
+authors = ["Pawel Zentala <zentala@gmail.com>"]
+license = "Proprietary"
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+loguru = "^0.5.3"
+bottle = "^0.12.19"
+"RPi.GPIO" = "^0.7.0"
+Flask = "^1.1.2"
+board = "^1.0"
+Adafruit-Blinka = "^6.2.2"
+adafruit-circuitpython-vl53l0x = "^3.3.5"
+Flask-SocketIO = "^5.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
