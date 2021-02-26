@@ -64,9 +64,9 @@ $ sudo ln -s \
   /etc/nginx/sites-enabled/default
 $ sudo systemctl reload nginx
 ```
-* Install [Poetry](https://python-poetry.org/docs/) for 
+* Install [nvm](https://github.com/nvm-sh/nvm)
 ``` bash
-$ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 ```
 * Restart RPi to apply above changes:
 ``` bash
