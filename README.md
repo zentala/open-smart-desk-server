@@ -110,3 +110,9 @@ Try it.
 * Open remote repository with remote development plugin
 * Allow VSCode to install recommened plugins
 
+## Stack
+* [Poetry](https://python-poetry.org/docs/) - Python version and dependencies managment
+* Backend
+  * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - lightweight WSGI web application framework.
+  * [Flask Socket.io](https://flask-socketio.readthedocs.io/en/latest/) -  low latency bi-directional communications between the clients and the server
+  * [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) - class to control the GPIO on a Raspberry Pi

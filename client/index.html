@@ -4,15 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart desk</title>
+  <title>Desk</title>
   <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-
   <div class="container">
-
     <div class="desk-bar"></div>
-
     <div class="desk">
       <div class="button-group button-group__updown">
         <div class="up"><svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg></div>
@@ -58,7 +55,6 @@
         <div class="active"><svg viewBox="0 0 24 24"><path d="M15,15V13.5A1.5,1.5 0 0,0 13.5,12A1.5,1.5 0 0,0 15,10.5V9C15,7.89 14.1,7 13,7H9V9H13V11H11V13H13V15H9V17H13A2,2 0 0,0 15,15" /></svg></div>
         <div><svg viewBox="0 0 24 24"><path d="M9,7V13H13V17H15V7H13V11H11V7H9Z" /></svg></div>
       </div>
-
       <svg class="svg-filters">
         <defs>
           <radialGradient id="active" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -100,261 +96,10 @@
           </filter>
         </defs>
       </svg>
-
     </div>
   </div>
 
-<!--
-  <div id="content" align="center">
-    <button type = "button" class = "button HIGH" id = "Relay1" onclick="Button_Click('Relay1');">Relay1</button>
-    <button type = "button" class = "button HIGH" id = "Relay2" onclick="Button_Click('Relay2');">Relay2</button>
-    <button type = "button" class = "button HIGH" id = "Relay3" onclick="Button_Click('Relay3');">Relay3</button>
-  </div>
--->
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-
-    let number = 0;
-    const animuj = () => {
-      displayNumber(number);
-      number += 1;
-    }
-    let idInterwalu = window.setInterval(animuj, 500);
-
-    const displayNumber = (number) => {
-      const digits = document.querySelector(".display").children
-
-      number = number.toString()
-      while (number.length < 3) number = "0" + number
-
-      const chars = number.split("")
-
-      for (let i = 0; i < chars.length; i++) {
-        digits[i].className = ""
-        digits[i].classList.add("digit-" + chars[i])
-      }
-    }
-
-    const actionsForMemoryButtons = () => {
-      const buttonGropups = document.querySelectorAll(".button-group__constant");
-
-      buttonGropups.forEach((buttonGroup) => {
-        const buttons = buttonGroup.querySelectorAll(":scope > div")
-
-        const removeAllActiveClasses = () => {
-          buttons.forEach((button) => {
-            if(button.classList.contains("active"))
-            button.classList.remove("active")
-          })
-        }
-
-        buttons.forEach((button) => {
-          button.addEventListener('click', () => {
-            const wasActive = button.classList.contains("active");
-            removeAllActiveClasses();
-              button.classList.add("active")
-          })
-        })
-      });
-    }
-
-    actionsForMemoryButtons();
-
-    const actionsForMoveButtons = () => {
-
-        const buttons = document.querySelectorAll(".button-group__updown > div")
-
-        const removeAllActiveClasses = () => {
-          buttons.forEach((button) => {
-            if(button.classList.contains("active"))
-            button.classList.remove("active")
-          })
-        }
-
-        buttons.forEach((button) => {
-          button.addEventListener('mousedown', () => {
-            removeAllActiveClasses()
-            button.classList.add("active")
-            if(button.classList.contains('up')) sendRelayPOST(getUpRelayJSON())
-            if(button.classList.contains('down')) sendRelayPOST(getDownRelayJSON())
-          })
-          button.addEventListener('mouseup', () => {
-            console.log('onmouseup')
-            removeAllActiveClasses();
-            sendRelayPOST(getDefaultRelayJSON())
-          })
-          button.addEventListener('dblclick', () => {
-            console.log('dblclick')
-            // const wasActive = button.classList.contains("active");
-            removeAllActiveClasses();
-            // if(!wasActive)
-              button.classList.add("active")
-              if(button.classList.contains('up')) sendRelayPOST(getUpRelayJSON())
-            if(button.classList.contains('down')) sendRelayPOST(getDownRelayJSON())
-              setTimeout(() => {
-                button.classList.remove("active")
-                sendRelayPOST(getDefaultRelayJSON())
-              }, 500)
-          })
-        })
-      // });
-    }
-
-    actionsForMoveButtons();
-    // .addEventListener('click', (e) => {
-
-
-
-      //   $('.button-group > div.active').not(this).removeClass('active');
-      //   $( this ).toggleClass( "active" );
-
-
-      /**** RELAY */
-
-    const sendRelayPOST = (body) => {
-    fetch('relay', {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    })
-    .then(result => result.text().then((s) => console.log('Last relay state: ' + s)))
-  }
-
-  const getDefaultRelayJSON = () => {
-    return {
-      Relay1: 1,
-      Relay2: 1,
-      Relay3: 1,
-    }
-  }
-
-  // 0,0,0 - down
-  // 1,0,0 - up
-
-  const getUpRelayJSON = () => {
-    return {
-      Relay1: 1,
-      Relay2: 0,
-      Relay3: 0,
-    }
-  }
-
-  const getDownRelayJSON = () => {
-    return {
-      Relay1: 0,
-      Relay2: 0,
-      Relay3: 0,
-    }
-  }
-
-  var Relay_Status = getDefaultRelayJSON()
-
-
-
-  var direction = {
-    up: 1,
-    down: 1,
-  }
-
-  function Button_Click(button_num) {
-
-    var button_id = "#" + button_num;
-    // console.log(button_id)
-
-    if(Relay_Status[button_num] == 1) {
-      document.querySelector(button_id).classList.remove("HIGH")
-      // $(button_id).removeClass("HIGH");
-      document.querySelector(button_id).classList.add("LOW")
-      // $(button_id).addClass("LOW");
-      Relay_Status[button_num] = 0;
-    }
-    else if(Relay_Status[button_num] == 0) {
-      document.querySelector(button_id).classList.remove("LOW")
-      // $(button_id).removeClass("LOW");
-      document.querySelector(button_id).classList.add("HIGH")
-      // $(button_id).addClass("HIGH");
-      Relay_Status[button_num] = 1;
-    }
-
-    // $.post('Relay', {Relay1: Relay_Status.Relay1,
-    //                 Relay2: Relay_Status.Relay2,
-    //                 Relay3: Relay_Status.Relay3,
-    //                 Relay4: Relay_Status.Relay4,
-    //                 Relay5: Relay_Status.Relay5,
-    //                 Relay6: Relay_Status.Relay6,
-    //                 Relay7: Relay_Status.Relay7,
-    //                 Relay8: Relay_Status.Relay8})
-
-
-    const body = {
-        Relay1: Relay_Status.Relay1,
-        Relay2: Relay_Status.Relay2,
-        Relay3: Relay_Status.Relay3
-      }
-
-      // console.log(body)
-
-    // fetch('Relay', {
-    //   method: "POST",
-    //   body: JSON.stringify(body)})
-    //   .then(result => {
-    //       // do something with the result
-    //       console.log("Completed with result:", result);
-    //   });
-
-
-
-
-
-
-    sendRelayPOST(body)
-
-
-
-    // fetch('Relay', {
-    //   method: "GET",
-    //   // body: JSON.stringify(body)
-    // })
-    //   .then(result => {
-    //       // do something with the result
-    //       console.log("Completed with result:", result);
-    //   });
-  }
-});
-</script>
-
-
-
-<style type="text/css">
-  .button {
-    display: block;
-    margin: 5px 5px 5px 5px;
-    width: 200px;
-    height: 55px;
-    font-size: 24pt;
-    font-weight: bold;
-    color: black;
-  }
-
-  .button.LOW {
-    background-color: Red;
-  }
-
-  .button.HIGH {
-    background-color: White;
-  }
-</style>
-
-
-
-
-
-
-
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,26 +1,39 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, jsonify, request
+from flask_socketio import SocketIO, send, emit
 import RPi.GPIO as GPIO
 
-# Relay switch setup
-Relay = [26, 20, 21]
-global Relay1,Relay2,Relay3
-Relay1 = 1
-Relay2 = 1
-Relay3 = 1
+
+
+# -----------------------------------------------
+# Relay switch setup ----------------------------
+
+relay_gpio_pin = [26, 20, 21] # relay board pins, from 1st to 3rd relay
+
+relay_direction_states = {
+  "stop": [1,1,1],
+  "up": [1,0,0],
+  "down": [0,0,0]
+}
 
 # GPIO.setwarnings(False) # disable GPIO warning
 GPIO.cleanup() # clean up all GPIO pins, refactor on exit
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
 
-for i in range(3):
-  GPIO.setup(Relay[i], GPIO.OUT)
-  GPIO.output(Relay[i], GPIO.HIGH)
+for index, pin in enumerate(relay_gpio_pin):
+  print("Initalizing relay no.{} on pin no.{}...".format(index, pin))
+  GPIO.setup(pin, GPIO.OUT)
+  GPIO.output(pin, GPIO.HIGH)
+
+def relays_switch(direction):
+  states = relay_direction_states.get(direction)
+  for index, state in enumerate(states):
+    GPIO.output(relay_gpio_pin[index], int(state))
 
 
-# HTTP server setup
-app = Flask(__name__)
 
-print("test")
+# -----------------------------------------------
+# HTTP server setup -----------------------------
+
 app = Flask(
   __name__,
   static_url_path="",
@@ -29,28 +42,48 @@ app = Flask(
 
 @app.route("/")
 def root():
-  return app.send_static_file('index.html')
+  return app.send_static_file("index.html")
 
-@app.route('/relay', methods = ['GET', 'POST'])
-def Relay_Control():
-  if request.method == 'POST':
-    global Relay1,Relay2,Relay3
-    content = request.json
-    Relay1 = content['Relay1']
-    Relay2 = content['Relay2']
-    Relay3 = content['Relay3']
 
-    GPIO.output(Relay[0], int(Relay1))
-    GPIO.output(Relay[1], int(Relay2))
-    GPIO.output(Relay[2], int(Relay3))
 
-    relays_status = {
-        'r1': Relay1,
-        'r2': Relay2,
-        'r3': Relay3
-    }
+# -----------------------------------------------
+# Socket.io server ------------------------------
 
-    return jsonify(code=200, relays=relays_status), 200
+socketio = SocketIO(app, cors_allowed_origins="*")
 
-if __name__ == "__main__":
-  app.run(host="127.0.0.1", port=8080)
+@socketio.on('motor')
+def motor(direction):
+  relays_switch(direction)
+
+@socketio.on('message')
+def handle_message(data):
+    print('received message: ' + data)
+
+@socketio.on('json')
+def handle_json(json):
+    print('received json: ' + str(json))
+
+
+# @socketio.on('my_event')
+# def handle_my_custom_event(arg1, arg2, arg3):
+#     print('received args: ' + arg1 + arg2 + arg3)
+
+# @socketio.on('message')
+# def handle_message(message):
+#     send(message)
+
+# @socketio.on('json')
+# def handle_json(json):
+#     send(json, json=True)
+
+# @socketio.on('my event')
+# def handle_my_custom_event(json):
+#     emit('my response', json)
+
+
+
+# -----------------------------------------------
+# Start application -----------------------------
+
+if __name__ == '__main__':
+  socketio.run(app, port="8080", host="localhost")
