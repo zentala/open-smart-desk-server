@@ -5,6 +5,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log('socket connected')
   });
 
+  socket.on('debug', function(msg) {
+    console.log(msg)
+  });
+
   const motor = (where) => {
     socket.emit('motor', where);
   }
