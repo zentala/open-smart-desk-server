@@ -68,6 +68,12 @@ $ sudo systemctl reload nginx
 ``` bash
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 ```
+* Awesome console:
+```bash
+$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ rm ~/.zshrc
+$ ln -s ~/open-smart-desk/conf/home/ubuntu/.zshrc ~/.zshrc
+```
 * Restart RPi to apply above changes:
 ``` bash
 $ sudo shutdown -r now

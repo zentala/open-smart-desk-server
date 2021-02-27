@@ -1,0 +1,24 @@
+{
+  "name": "open-smart-desk",
+  "version": "0.2.0",
+  "description": "Smart height-adjustable desk server",
+  "main": "server",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server --ignore node_modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zentala/open-smart-desk.git"
+  },
+  "author": "Pawel Zentala <zentala@gmail.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/zentala/open-smart-desk/issues"
+  },
+  "homepage": "https://github.com/zentala/open-smart-desk#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
