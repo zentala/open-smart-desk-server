@@ -5,20 +5,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log('socket connected')
   });
 
-  socket.on('debug', function(msg) {
+  socket.on('laser', function(msg) {
     console.log(msg)
+    displayNumber(msg)
   });
 
   const motor = (where) => {
     socket.emit('motor', where);
   }
 
-  let number = 0;
-  const animuj = () => {
-    displayNumber(number);
-    number += 1;
-  }
-  let idInterwalu = window.setInterval(animuj, 500);
+  // let number = 0;
+  // const animuj = () => {
+  //   displayNumber(number);
+  //   number += 1;
+  // }
+  // let idInterwalu = window.setInterval(animuj, 500);
 
   const displayNumber = (number) => {
     const digits = document.querySelector(".display").children

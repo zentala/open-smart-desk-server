@@ -23,7 +23,10 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "i2c-bus": "^5.2.1",
+    "node-observer": "^0.4.4",
     "socket.io": "^3.1.2",
+    "vl53l0x": "^2.0.0",
     "winston": "^3.3.3"
   }
 }
