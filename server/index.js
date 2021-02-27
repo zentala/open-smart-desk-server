@@ -7,6 +7,7 @@ const config = require('./config')
 const logger = require('./logger')
 const io = require('./io')
 const laser = require('./vl53l0x')
+const relays = require('./relays')
 
 
 io.attach(server)
@@ -16,3 +17,4 @@ server.listen(config.server.port, () => {
 })
 
 laser()
+relays()

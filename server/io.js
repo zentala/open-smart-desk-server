@@ -1,8 +1,6 @@
 const io = require('socket.io')()
 const observer = require('node-observer')
 
-let lastLaserNumber = 0;
-
 io.on('connection', (socket) => {
   socket.emit('debug', 'comnnected!')
 
@@ -10,16 +8,8 @@ io.on('connection', (socket) => {
     socket.emit('debug', '1s intervall message')
   }, 1000)
 
-  observer.subscribe(socket, 'laser', (who, data) => {
-    if(lastLaserNumber != data && data.toString().length <= 3) {
-
-      console.log(data)
-      socket.emit('laser', data)
-      lastLaserNumber = data;
-    }
-
-  }
-)
+  observer.subscribe(socket, 'laser', (who, data) => socket.emit('laser', data)) // emit desk height to the client
+  socket.on("motor", (payload) => observer.send(this, 'motor', payload)) // pass motor events (up, down, stop) to relays
 
 })
 
