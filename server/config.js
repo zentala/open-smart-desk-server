@@ -20,6 +20,8 @@ const config = {
   },
   pir: {
     pin: 18,
+    timeout: 60*1000, // ms; 60s here
+    debug: false
   }
 }
 
