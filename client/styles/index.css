@@ -3,18 +3,31 @@
 @import url("buttons.css");
 
 body {
-    background: #f7f7f7;
+    background: #222;
+    background-image: url("../images/concrete_wall.png");
     padding: 0;
     margin: 0;
 }
 
 .desk-bar {
   display: flex;
-  height: 45px;
-  background: #000;
+  height: 80px;
+  background: transparent;
   /* box-shadow: 0 19px 13px 0 rgb(0 0 0 / 80%); */
-  box-shadow: 0 0 20px 0 rgb(0 0 0 / 30%);
-  z-index: 400;
+  background-image: url("../images/dark_wood.png");
+  border-bottom: 1px solid #0a0a0a;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 60%);
+  z-index: 999;
+  position: relative;
+}
+
+.desk-bar:after {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0; content: "";
+  /* background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 28%, rgba(0,0,0,0.2) 77%, rgba(0,0,0,0) 100%); */
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .post :is(h1, h2, h3) {
@@ -42,16 +55,22 @@ body {
   box-shadow: inset 0 0 4px #000;
 }
 .desk {
-  background: #303033 url(http://subtlepatterns.com/patterns/broken_noise.png);
+  background: #303033 url(../images/broken_noise.png);
   padding: 9px 18px 17px 21px;
   display: table;
   margin: 0 auto;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  border: 1px solid #090909;
+  /* border: 1px solid #090909; */
+  border: 1px solid #252525;
   border-top: none;
   box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%);
 }
 
 
 .desk__separator {width: 10px; display: inline-flex;}
+
+
+.relay-debug button.active {
+  background:red;
+}

@@ -5,7 +5,7 @@
   "main": "server",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server --ignore node_modules",
+    "dev": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,10 +24,20 @@
   "dependencies": {
     "express": "^4.17.1",
     "i2c-bus": "^5.2.1",
+    "mongoose": "5.11.15",
     "node-observer": "^0.4.4",
     "onoff": "^6.0.1",
     "socket.io": "^3.1.2",
     "vl53l0x": "^2.0.0",
+    "walk-sync": "^2.2.0",
     "winston": "^3.3.3"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "ignore": [
+      "node_modules/",
+      "client/"
+    ],
+    "trace-warnings": true
   }
 }

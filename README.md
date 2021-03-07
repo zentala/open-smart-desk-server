@@ -21,6 +21,7 @@ Note: **I don't recommend to build it as it is, because of a few known issues.**
 * We can reduce costs replacing oversized components:
   * RPi4B with RPi zero 
   * 5V power supply 6A with 2A
+* Power jumps when switching relays are causing laser metter turning off
 
 ### Parts list
 * [Raspbery Pi 4 model B (4GB)](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-4gb)
@@ -67,6 +68,19 @@ $ sudo systemctl reload nginx
 * Install [nvm](https://github.com/nvm-sh/nvm)
 ``` bash
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+```
+* [Install MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) 4.4.4, and hold packages and start deamon:
+``` bash
+$ wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org=4.4.4 mongodb-org-server=4.4.4 mongodb-org-shell=4.4.4 mongodb-org-mongos=4.4.4 mongodb-org-tools=4.4.4
+$ echo "mongodb-org hold" | sudo dpkg --set-selections
+$ echo "mongodb-org-server hold" | sudo dpkg --set-selections
+$ echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+$ echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+$ echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+$ sudo systemctl enable mongod.service
 ```
 * Awesome console:
 ```bash
@@ -115,10 +129,18 @@ Try it.
 * Read [detailed remote SSH instruction development](https://code.visualstudio.com/docs/remote/ssh) if neeed
 * Open remote repository with remote development plugin
 * Allow VSCode to install recommened plugins
+* Install [Robo3t](https://robomongo.org/download) for MongoDB mangment
+  * On desk local you need to [allow to connect from remote](https://www.digitalocean.com/community/tutorials/how-to-configure-remote-access-for-mongodb-on-ubuntu-20-04); add `desk.local` instead of IP
+  * Host: `desk.local`
 
-## Stack
-* [Poetry](https://python-poetry.org/docs/) - Python version and dependencies managment
-* Backend
-  * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - lightweight WSGI web application framework.
-  * [Flask Socket.io](https://flask-socketio.readthedocs.io/en/latest/) -  low latency bi-directional communications between the clients and the server
-  * [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) - class to control the GPIO on a Raspberry Pi
+## TODO
+### Software
+* Add firewall setup
+* Speed up setup and development
+  * Creating ready to flash image
+  * Configuring RPi with Ansible
+* Visualising time spent working
+
+### Hardware
+* New enclousure for the electronic with smaller power supply
+* Physical controller with buttons and LCD connected to the RPi with USB 

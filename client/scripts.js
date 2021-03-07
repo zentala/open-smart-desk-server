@@ -1,5 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
+  /* ****************************************** */
+  /* Socket.io ******************************** */
+
   var socket = io();
   socket.on('connect', function() {
     console.log('socket connected')
@@ -13,6 +16,57 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const motor = (where) => {
     socket.emit('motor', where);
   }
+
+
+  /* ****************************************** */
+  /* Switching textures - just for debugging ** */
+
+  let options;
+
+  fetch('textures')
+    .then(response => response.json())
+    .then(data => {
+      if(data.length > 0) document.querySelector(".backgrounds").classList.remove("hidden")
+
+//   ["1","2","3","4"].forEach( function(item) {
+//     const optionObj = document.createElement("option");
+//     optionObj.textContent = item;
+//     document.getElementById("myselect").appendChild(optionObj);
+//  });
+
+      options = data
+      for(m = 0 ; m <= options.length-1; m++) {
+        var opt= document.createElement("OPTION");
+        opt.text = options[m];
+        opt.value = (m+1);
+        if(options[m] == "5"){
+          opt.selected = true;
+        }
+
+        document.getElementById("selectBG").options.add(opt);
+
+        const opt2 = opt.cloneNode(true);
+        document.getElementById("selectBAR").options.add(opt2);
+      }
+    });
+
+  const backgrounds = document.getElementById("selectBG")
+  backgrounds.addEventListener("change", function() {
+    const relativePath = options[this.value-1]
+    console.log(relativePath)
+    document.body.style.backgroundImage = `url('textures/${relativePath}')`;
+  });
+
+  const bars = document.getElementById("selectBAR")
+  bars.addEventListener("change", function() {
+    const relativePath = options[this.value-1]
+    console.log(relativePath)
+    document.querySelector('.desk-bar').style.backgroundImage = `url('textures/${relativePath}')`;
+  });
+
+
+  /* ****************************************** */
+  /* Number digit ***************************** */
 
   // let number = 0;
   // const animuj = () => {
@@ -34,6 +88,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       digits[i].classList.add("digit-" + chars[i])
     }
   }
+
+
+  /* ****************************************** */
+  /* Memory & position buttons **************** */
 
   const actionsForMemoryButtons = () => {
     const buttonGropups = document.querySelectorAll(".button-group__constant");
@@ -100,5 +158,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   actionsForMoveButtons();
+
+  /* ****************************************** */
+  /* Relay debug buttons ********************** */
+  const relayDebugGroup = document.querySelectorAll(".relay-debug")
+  relayDebugGroup.forEach((buttonGroup) => {
+    const buttons = buttonGroup.querySelectorAll(":scope > button")
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const number = button.classList[0].split("")[1];
+        console.log(number)
+        if(button.classList.contains("active")) {
+          button.classList.remove("active")
+          socket.emit('relay', {number: number, state: 1});
+        } else {
+          button.classList.add("active")
+          socket.emit('relay', {number: number, state: 0});
+        }
+      })
+    })
+  })
 
 });

@@ -7,15 +7,22 @@ const config = {
     port: 8080,
     static: path.join(__dirname, '../client')
   },
+  db: {
+    uri: 'mongodb://localhost:27017/desk',
+    options: {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  },
   logging: {
     level: 'debug'
   },
   relay: {
     pins: [26, 20, 21],
-    directions: {
-      "stop": [1, 1, 1],
-      "up": [1, 0, 0],
-      "down": [0, 0, 0]
+    directions: { // 1st is now always in default position because is broken and I rewired it
+      'stop': [1, 1, 1],
+      'up': [1, 1, 0],
+      'down': [1, 0, 0]
     }
   },
   pir: {

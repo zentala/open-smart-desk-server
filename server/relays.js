@@ -19,7 +19,14 @@ module.exports = () => {
 
     const states = config.relay.directions[direction]
     states.forEach((state, index) => {
+      logger.debug(`Setting relay no.${index} to ${state}`)
       relays[index].writeSync(state)
     })
   })
+
+  observer.subscribe(this, 'relay', (who, data) => {
+    logger.debug(`Setting relay no.${data.number} to ${data.state}`)
+    relays[data.number].writeSync(data.state)
+  })
+
 }
