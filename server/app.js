@@ -1,26 +1,33 @@
-const express = require('express')
-const config = require('./config')
-const fs = require('fs')
-const path = require('path')
-const walkSync = require("walk-sync")
+class Application {
+  constructor({ logger, server, database, io, pir, eventRepository, relay, ldm }) {
+    this.server = server
+    this.database = database
+    this.logger = logger
+    this.io = io
+    this.pir = pir
+    this.ldm = ldm
+    this.eventRepository = eventRepository
+    this.relay = relay
+  }
 
-const app = express()
+  async start() {
+    this.logger.info(`Started iDesk server as Process ID ${process.pid}`)
+    await this.database.connect()
+    await this.eventRepository.saveEvent('on')
+    await this.io.start(await this.server.start())
+    await this.pir.start()
+    await this.relay.start()
+    await this.ldm.start()
+  }
 
-app.use(express.static(config.server.static))
-app.set('port',config.server.port);
+  async stop(options) {
+    await this.eventRepository.saveEvent('off')
+    this.logger.info('Stopping app...')
+    // await this.database.disconnect()
+    // await this.server.stop()
+    await this.pir.stop()
 
-app.get('/textures', function (req, res) {
-  const texturesPath = path.join(__dirname, '../client/textures');
-  if (!fs.existsSync(texturesPath))
-    res.send([])
-  else
-    res.send(walkSync("./client/textures", {globs: ["**/*.png"]}))
-})
+  }
+}
 
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-module.exports = app;
+module.exports = Application
