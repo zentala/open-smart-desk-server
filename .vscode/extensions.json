@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "dpkristensen-garmin.udev-rules",
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        "ikigeg.awilix-vscode-container-definitions"
     ]
 }
