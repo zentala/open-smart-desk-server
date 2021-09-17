@@ -6,6 +6,25 @@ class Socket {
   constructor({ logger,  emitter}) { // emitter
     this.logger = logger
     this.emitter = emitter
+
+    // Initializing events forwarding
+    // backend events forwarded to the client
+    this.observerEvents = [
+      'laser', // current desk height
+      'work:start', // recorded beginning of the work
+      'work:end', // recorded ending of the work
+      'memory:saved', // memory was saved
+      'memory:got', // remembered value ({ button, height })
+    ]
+
+    // client events forwarded to the backend
+    this.socketEvents = [
+      'motor', // motor events to relays (up, down, stop)
+      'relay',
+      'memory:get', // get memorized height (height)
+      'memory:go', // go to the memorized height (button)
+      'memory:save', // save the current height as memorized height ({button, height})
+    ]
   }
 
   start(http) {
@@ -14,40 +33,26 @@ class Socket {
 
     this.io.on('connection', (socket) => {
       this.logger.info('Socket client connected')
-      socket.emit('debug', 'comnnected!')
+      socket.emit('debug', 'socket connected')
 
-      // setInterval(() => {
-      //   socket.emit('debug', '1s intervall message')
-      // }, 1000)
-
-      // receive from observer and emit to the client socket
-      const forwardObserver = (key) => {
-        this.emitter.on(key, payload => {
-          this.logger.info(`sendong to socket: ${key}`)
+      // Setting up events forwarding
+      // backend > frontend
+      this.observerEvents.forEach((key) => {
+        this.emitter.on(key, (payload) => {
+          this.logger.debug(`Forwarding to the Socket: ${key}`)
           socket.emit(key, payload)
         })
-      }
-      forwardObserver('laser') // current desk height
-      forwardObserver('work:start') // recorded beginning of the work
-      forwardObserver('work:end') // recorded ending of the work
+      })
 
-      // // receiving from the client socket and forward to observer
-      const forwardSocket = (key) => {
-        socket.on(key, payload => {
-          this.logger.info(`recived from socket: ${key}`)
-          console.log(payload)
+      // frontend > backend
+      this.socketEvents.forEach((key) => {
+        socket.on(key, (payload) => {
+          this.logger.debug(`Receiving from the Socket: ${key}`)
           this.emitter.emit(key, payload)
         })
-      }
-      forwardSocket('motor') // motor events to relays (up, down, stop)
-      forwardSocket('relay')
+      })
     })
   }
-
 }
-
-
-
-
 
 module.exports = Socket
