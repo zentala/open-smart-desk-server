@@ -1,5 +1,5 @@
 class Application {
-  constructor({ logger, server, database, io, pir, eventRepository, relay, ldm }) {
+  constructor({ logger, server, database, io, pir, eventRepository, relay, ldm, memoryService }) {
     this.server = server
     this.database = database
     this.logger = logger
@@ -8,6 +8,7 @@ class Application {
     this.ldm = ldm
     this.eventRepository = eventRepository
     this.relay = relay
+    this.memoryService = memoryService
   }
 
   async start() {
@@ -18,6 +19,7 @@ class Application {
     await this.pir.start()
     await this.relay.start()
     await this.ldm.start()
+    await this.memoryService.start()
   }
 
   async stop(options) {

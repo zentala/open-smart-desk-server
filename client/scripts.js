@@ -3,6 +3,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   /* ****************************************** */
   /* Socket.io ******************************** */
 
+
+  let deskHeight = 0;
+
   var socket = io();
   socket.on('connect', function() {
     console.log('socket connected')
@@ -10,12 +13,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   socket.on('laser', function(msg) {
     console.log(msg)
-    displayNumber(msg)
+    setNewDeskHeight(msg)
+  });
+
+  socket.on('memory:got', ({ button, height }) => {
+    console.log(button, height)
+    if(height) {
+      displayNumberForWhile(height)
+    }
   });
 
   const motor = (where) => {
     socket.emit('motor', where);
   }
+
+
 
 
   /* ****************************************** */
@@ -89,6 +101,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   }
 
+  const displayNumberForWhile = (number, time = 3) => {
+    displayNumber(number)
+    setTimeout(() => { displayNumber(deskHeight) }, time * 1000)
+  }
+
+  const setNewDeskHeight = (height) => {
+    deskHeight = height
+    displayNumber(deskHeight)
+  }
+
 
   /* ****************************************** */
   /* Memory & position buttons **************** */
@@ -107,10 +129,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
 
       buttons.forEach((button) => {
+        const buttonNumber = button.getAttribute("data-number")
+
         button.addEventListener('click', () => {
-          const wasActive = button.classList.contains("active");
+          const wasActive = button.classList.contains("active")
           removeAllActiveClasses();
-            button.classList.add("active")
+          console.log('memory btn clicked')
+          button.classList.add("active")
+          socket.emit('memory:get', buttonNumber)
+        })
+
+        button.addEventListener('dblclick', () => {
+          const wasActive = button.classList.contains("active")
+          removeAllActiveClasses();
+          console.log('memory btn clicked DB')
+          button.classList.add("active")
+          socket.emit('memory:save', buttonNumber)
+
         })
       })
     });
