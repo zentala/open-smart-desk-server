@@ -1,5 +1,45 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
+/* ****************************************** */
+  /* Number digit ***************************** */
+
+  // let number = 0;
+  // const animuj = () => {
+  //   displayNumber(number);
+  //   number += 1;
+  // }
+  // let idInterwalu = window.setInterval(animuj, 500);
+
+  const displayNumber = (number) => {
+    const digits =  document.querySelector(".display").children
+
+    number = number.toString()
+    while (number.length < 3) number = "0" + number
+
+    const chars = number.split("")
+
+    for (let i = 0; i < chars.length; i++) {
+      digits[i].className = ""
+      digits[i].classList.add("digit-" + chars[i])
+    }
+  }
+
+  const displayNumberForWhile = (number, time = 3) => {
+    displayNumber(number)
+    setTimeout(() => { displayNumber(deskHeight) }, time * 1000)
+  }
+
+  const setNewDeskHeight = (height) => {
+    console.log('Setting new desk height: ', height)
+    deskHeight = height
+    displayNumber(deskHeight)
+  }
+
+  document.querySelector(".display").addEventListener('click', () => {
+    console.log('Get current height')
+    socket.emit('height:get');
+  })
+
   /* ****************************************** */
   /* Socket.io ******************************** */
 
@@ -9,12 +49,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
   var socket = io();
   socket.on('connect', function() {
     console.log('socket connected')
+
+    // the client need to get latest height of desk from the server
+    socket.emit('height:get');
   });
 
   socket.on('laser', function(msg) {
     console.log(msg)
+    console.log('laser', msg)
     setNewDeskHeight(msg)
   });
+
+  // the client need to get latest height of desk from the server
+  socket.on('height:got', (height) => { console.log('height:got ', height); setNewDeskHeight(height); });
 
   socket.on('memory:got', ({ button, height }) => {
     console.log(button, height)
@@ -77,39 +124,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
 
 
-  /* ****************************************** */
-  /* Number digit ***************************** */
 
-  // let number = 0;
-  // const animuj = () => {
-  //   displayNumber(number);
-  //   number += 1;
-  // }
-  // let idInterwalu = window.setInterval(animuj, 500);
-
-  const displayNumber = (number) => {
-    const digits = document.querySelector(".display").children
-
-    number = number.toString()
-    while (number.length < 3) number = "0" + number
-
-    const chars = number.split("")
-
-    for (let i = 0; i < chars.length; i++) {
-      digits[i].className = ""
-      digits[i].classList.add("digit-" + chars[i])
-    }
-  }
-
-  const displayNumberForWhile = (number, time = 3) => {
-    displayNumber(number)
-    setTimeout(() => { displayNumber(deskHeight) }, time * 1000)
-  }
-
-  const setNewDeskHeight = (height) => {
-    deskHeight = height
-    displayNumber(deskHeight)
-  }
 
 
   /* ****************************************** */

@@ -23,6 +23,7 @@ container
   .register({ // services
     presenceService: asClass(require('./services/presence.service')),
     memoryService: asClass(require('./services/memory.service')),
+    heightService: asClass(require('./services/height.service'))
   })
   .register({ // hardware interfaces
     pir: asClass(require('./interfaces/hw/pir')),

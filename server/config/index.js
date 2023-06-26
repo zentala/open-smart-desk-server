@@ -34,6 +34,10 @@ const config = {
       '1': 'present',
       'undefined': 'unknown'
     }
+  },
+  desk: {
+    memoryButtonsRange: [1,4],
+    heightRange: [0,1500]
   }
 }
 

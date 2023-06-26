@@ -1,5 +1,5 @@
 class Application {
-  constructor({ logger, server, database, io, pir, eventRepository, relay, ldm, memoryService }) {
+  constructor({ logger, server, database, io, pir, eventRepository, relay, ldm, memoryService, heightService }) {
     this.server = server
     this.database = database
     this.logger = logger
@@ -9,6 +9,7 @@ class Application {
     this.eventRepository = eventRepository
     this.relay = relay
     this.memoryService = memoryService
+    this.heightService = heightService
   }
 
   async start() {
@@ -16,6 +17,7 @@ class Application {
     await this.database.connect()
     await this.eventRepository.saveEvent('on')
     await this.io.start(await this.server.start())
+    await this.heightService.start()
     await this.pir.start()
     await this.relay.start()
     await this.ldm.start()
