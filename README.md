@@ -7,6 +7,8 @@ Track your time spent sitting and force yourself to stand or take a break.
 Built with RPi, relays, PIR sensor and laser distance meter. 
 Should be compatible with any AC-driven standing desk.
 
+Detailed project description with photos and resources: https://desk.zentala.io/
+
 ## Project status
 In development. 
 * Finished hardware controler (v0.1). 
