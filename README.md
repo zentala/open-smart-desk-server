@@ -23,25 +23,19 @@ The SDS (Smart Desk Server) is a central software module of the Smart Desk Modul
 - **Admin Web Interface (AWI):** For configuring hardware modules and setting semi-automatic actions.
 - **User Web Application (UWA):** Interactive platform providing health tips, data visualization, and gamification.
 - **Sensor Data Analyzer (SDA):** Analyzes sensor data for user activity insights and health recommendations.
+
+### External Software Components
 - **MQTT Broker:** Enables communication between ecosystem modules. Can be installed either directly on the server or hosted externally.
 
 The Smart Desk Server is designed to be a versatile and independent unit that can be installed locally on an RPi under the desk, on a local NAS server, or installed other already-in-use server eg. Home Assistant. It communicates exclusively with the hardware modules, focusing on providing user health-oriented experience and features.
 
-## Hardware Requirements
-The project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Subsequent iterations have led to a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), that for now isn't fully designed and avaliable to construct or buy on the market. 
+## Hardware Requirements Status
+
+The SDS project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Further iterations have led to a vision for a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), which currently is not fully designed and is not available for construction or purchase.
 
 ### Project Note
-SDS is currently a DIY project with sporadic updates. The journey from concept to commercialization is long and complex. The existing hardware, while functional, is not suitable for replication and is more of a prototype. Lessons learned from its construction can be found in [Physical Control Panel v1](https://github.com/zentala/desk.zentala.io/wiki/Physical-Control-Panel-v1) and [Driving Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). The goal is to develop a new version of the hardware based on a modular architecture. Similarly, the vision for the software is to create Dockerized a ready-to-use module.
+SDS is a DIY project in a state of sporadic updates. The journey from concept to commercialization is long and complex. The existing hardware, while functional, is not recommended for replication due to its prototype nature and design flaws. Lessons learned are detailed in [Physical Control Panel v1](https://github.com/zentala/desk.zentala.io/wiki/Physical-Control-Panel-v1) and [Driving Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). The aim is to develop a new version of the hardware based on the modular architecture. In parallel, the software vision involves creating a Dockerized, ready-to-use modular component.
 
-
-## Project Status
-- **Current Phase:** Active Development
-- **Progress:**
-  - Hardware controller (v0.1) - Completed
-  - Server development - Ongoing
-
-## Collaboration Call
-We are looking for investors, data scientists, passionate electricians or hardware enthusiasts to collaborate on this exciting project. For more information on collaboration and potential profitability, please visit our [Business Strategy](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
 
 ## Project Status
 - **Current Phase:** Early Development
@@ -53,6 +47,9 @@ We are looking for investors, data scientists, passionate electricians or hardwa
   - Server Development - Ongoing
   - Sensor Integration - In Progress
     - Transitioning from PIR to microwave sensors due to test failures.
+
+### Collaboration Call
+We are looking for investors, data scientists, passionate electricians or hardware enthusiasts to collaborate on this exciting project. For more information on collaboration and potential profitability, please visit our [Business Strategy](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
 
 
 ## Technological stack
