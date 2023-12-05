@@ -17,7 +17,11 @@ In development.
 
 ## Hardware
 
-The initial version was powered by the [Smart Desk Driver Module v.1](https://github.com/zentala/desk.zentala.io/wiki/Smart-Desk-Driver-Module-v.1). However, this first version had its challenges and limitations, making it unsuitable for further development. Instead, I invite you to join in designing a new version of the electronic modular Smart Desk architecture. Check out [this wiki page](https://github.com/zentala/desk.zentala.io/wiki) where I detail what I've built so far, the issues I encountered, and the draft for new hardware architecture. As my primary focus is on software, I'm keen to collaborate with an electrician interested in investing time in this project, which could potentially become profitable. The business strategy is outlined [here](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy).
+The initial version was powered by the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). However, this first version had its challenges and limitations, making it not recomedeble to build and usefull base for further development. 
+
+Instead, I invite you to join the project's new version of the [architecture modules](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision).
+
+As my primary focus is on software, I'm keen to collaborate with an electrician interested in investing time in this project, which could potentially become profitable. [The business strategy is outlined here](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
 
 
 ## Software Setup
