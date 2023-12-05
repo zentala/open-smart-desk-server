@@ -10,6 +10,9 @@
 
 Explore the project in detail: [Smart Desk Wiki](https://github.com/zentala/desk.zentala.io/wiki)
 
+## Hardware Requirements
+The project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Subsequent iterations have led to a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), that for now isn't fully designed and avaliable to construct or buy on the market. 
+
 ## Project Status
 - **Current Phase:** Active Development
 - **Progress:**
@@ -18,9 +21,6 @@ Explore the project in detail: [Smart Desk Wiki](https://github.com/zentala/desk
 
 **Collaboration Call**
 We are looking for investors, data scientists, passionate electricians or hardware enthusiasts to collaborate on this exciting project. For more information on collaboration and potential profitability, please visit our [Business Strategy](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
-
-## Hardware Requirements
-The project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Subsequent iterations have led to a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), that for now isn't fully designed and avaliable to construct or buy on the market. 
 
 ## Software Setup
 
