@@ -1,5 +1,6 @@
 # Open Smart Desk Server [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental)
 
+
 ## Key Features
 The Open Smart Desk Server (SDS) is an integral module of the Smart Desk ecosystem, equipped with various software components to enhance user experience and promote health-conscious work habits. Key features include:
 
@@ -8,6 +9,7 @@ The Open Smart Desk Server (SDS) is an integral module of the Smart Desk ecosyst
 - **Smart Logic for Health:** Intelligent algorithms produces personalized recommendations of breaks and posture change suggestions.
 - **User Engagement and Gamification:** The User Web Application (UWA) features a point-based system to motivate users to adopt healthier routines.
 - **Configurable Semi-Automated Routines:** Allows users to set up customized rulesets for semi-automated desk control, enhancing the overall experience.
+
 
 ## 🧩 Smart Desk Modular System Vision
 The SDS (Smart Desk Server) is a central software module of the Smart Desk Modular System, integrating various software components and ensuring seamless communication with hardware modules:
@@ -28,17 +30,32 @@ The Smart Desk Server is designed to be a versatile and independent unit that ca
 ## Hardware Requirements
 The project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Subsequent iterations have led to a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), that for now isn't fully designed and avaliable to construct or buy on the market. 
 
+### Project Note
+SDS is currently a DIY project with sporadic updates. The journey from concept to commercialization is long and complex. The existing hardware, while functional, is not suitable for replication and is more of a prototype. Lessons learned from its construction can be found in [Physical Control Panel v1](https://github.com/zentala/desk.zentala.io/wiki/Physical-Control-Panel-v1) and [Driving Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). The goal is to develop a new version of the hardware based on a modular architecture. Similarly, the vision for the software is to create Dockerized a ready-to-use module.
+
+
 ## Project Status
 - **Current Phase:** Active Development
 - **Progress:**
   - Hardware controller (v0.1) - Completed
   - Server development - Ongoing
 
-**Collaboration Call**
+## Collaboration Call
 We are looking for investors, data scientists, passionate electricians or hardware enthusiasts to collaborate on this exciting project. For more information on collaboration and potential profitability, please visit our [Business Strategy](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
 
+## Project Status
+- **Current Phase:** Early Development
+- **Project Overview:** The project is in its vision phase, with a primary focus on developing a web interface for desk movement control. It's important to note that the features are in the early stages of development.
 
-# Technological stack
+### Progress
+  - Hardware controller (v0.1) - Completed (Not recommended for replication due to design flaws)
+  - New Hardware Development - In Planning (See [Modular Architecture](https://github.com/zentala/desk.zentala.io/wiki/Modular-Architecture) for vision)
+  - Server Development - Ongoing
+  - Sensor Integration - In Progress
+    - Transitioning from PIR to microwave sensors due to test failures.
+
+
+## Technological stack
 | Category    | Technology  |
 | :---------- | :---------- |
 | Environment | ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=black) &nbsp; ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-A22846?logo=raspberrypi&logoColor=white) |
