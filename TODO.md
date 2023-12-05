@@ -10,4 +10,8 @@ https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/
 
 5) there are some issues around multiple clients connected to the socket
 
-6) 
+
+-   **System Image**: Describe firewall setup. Speed build up setup with Ansible. Build Docker containers.
+-   **Front-End**: Vsualize work, break and standing time.
+-   ""Czujniki wykywania obesncoi**: bedziemy eksperymentowac z roznymi algorytmami i fzycznimi konstukacjmi aby znalexc te zapeniajaca najwysza skutecznosc
+-   **Hardware**: Design a new enclosure and develop a physical controller.
