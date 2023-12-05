@@ -1,4 +1,4 @@
-# Open Smart Desk Server [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
+# Open Smart Desk Server  [![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#alpha) 
 
 ## Overview
 Make your height-adjustable desk smarter!
