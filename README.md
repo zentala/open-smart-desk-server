@@ -1,28 +1,26 @@
-# Open Smart Desk Server  [![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#alpha) 
+# Open Smart Desk Server [![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#alpha)
 
 ## Overview
-Make your height-adjustable desk smarter!
-Track your time spent sitting and force yourself to stand or take a break. 
+**Make your height-adjustable desk smarter with the Open Smart Desk!** This project transforms your typical standing desk into an intelligent workstation, designed to track your sitting time and encourage healthier work habits. 
 
-Built with RPi, relays, PIR sensor and laser distance meter. 
-Should be compatible with any AC-driven standing desk.
+**Key Features:**
+- Track and analyze your sitting and standing patterns.
+- Automated and manual control for desk height adjustments.
+- Compatible with any AC-driven standing desk.
 
-Detailed project description with photos and resources: https://desk.zentala.io/
+Explore the project in detail: [Smart Desk Wiki](https://github.com/zentala/desk.zentala.io/wiki)
 
-## Project status
-In development. 
-* Finished hardware controler (v0.1). 
-* Server is in the development now.
+## Project Status
+- **Current Phase:** Active Development
+- **Progress:**
+  - Hardware controller (v0.1) - Completed
+  - Server development - Ongoing
 
+**Collaboration Call**
+We are looking for investors, data scientists, passionate electricians or hardware enthusiasts to collaborate on this exciting project. For more information on collaboration and potential profitability, please visit our [Business Strategy](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
 
-## Hardware
-
-The initial version was powered by the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). However, this first version had its challenges and limitations, making it not recomedeble to build and usefull base for further development. 
-
-Instead, I invite you to join the project's new version of the [architecture modules](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision).
-
-As my primary focus is on software, I'm keen to collaborate with an electrician interested in investing time in this project, which could potentially become profitable. [The business strategy is outlined here](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
-
+## Hardware Requirements
+The project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Subsequent iterations have led to a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), that for now isn't fully designed and avaliable to construct or buy on the market. 
 
 ## Software Setup
 
