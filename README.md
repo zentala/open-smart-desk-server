@@ -1,14 +1,29 @@
-# Open Smart Desk Server [![stability-alpha](https://img.shields.io/badge/stability-alpha-f4d03f.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#alpha)
+# Open Smart Desk Server [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#experimental)
 
-## Overview
-**Make your height-adjustable desk smarter with the Open Smart Desk!** This project transforms your typical standing desk into an intelligent workstation, designed to track your sitting time and encourage healthier work habits. 
+## Key Features
+The Open Smart Desk Server (SDS) is an integral module of the Smart Desk ecosystem, equipped with various software components to enhance user experience and promote health-conscious work habits. Key features include:
 
-**Key Features:**
-- Track and analyze your sitting and standing patterns.
-- Automated and manual control for desk height adjustments.
-- Compatible with any AC-driven standing desk.
+- **Manual Desk Control:** Direct interaction with the Electronic Driving Control Module for desk height adjustments.
+- **Presence and Pose Detection:** Utilizes sensors to track user activities, forming user phisical activity timeline.
+- **Smart Logic for Health:** Intelligent algorithms produces personalized recommendations of breaks and posture change suggestions.
+- **User Engagement and Gamification:** The User Web Application (UWA) features a point-based system to motivate users to adopt healthier routines.
+- **Configurable Semi-Automated Routines:** Allows users to set up customized rulesets for semi-automated desk control, enhancing the overall experience.
 
-Explore the project in detail: [Smart Desk Wiki](https://github.com/zentala/desk.zentala.io/wiki)
+## 🧩 Smart Desk Modular System Vision
+The SDS (Smart Desk Server) is a central software module of the Smart Desk Modular System, integrating various software components and ensuring seamless communication with hardware modules:
+
+### 🔩 Hardware Modules
+- **Electronic Driving Control Module:** Controls the desk's physical movements.
+- **Physical Control Panel (PCP):** Provides a user interface for desk interaction.
+- **Presence and Pose Detection (PPD):** Employs sensors for tracking user activities.
+
+### 💻 Software Components Integrated in Smart Desk Server (SDS)
+- **Admin Web Interface (AWI):** For configuring hardware modules and setting semi-automatic actions.
+- **User Web Application (UWA):** Interactive platform providing health tips, data visualization, and gamification.
+- **Sensor Data Analyzer (SDA):** Analyzes sensor data for user activity insights and health recommendations.
+- **MQTT Broker:** Enables communication between ecosystem modules. Can be installed either directly on the server or hosted externally.
+
+The Smart Desk Server is designed to be a versatile and independent unit that can be installed locally on an RPi under the desk, on a local NAS server, or installed other already-in-use server eg. Home Assistant. It communicates exclusively with the hardware modules, focusing on providing user health-oriented experience and features.
 
 ## Hardware Requirements
 The project initially utilized the [Smart Desk Driving-Control Module v1](https://github.com/zentala/desk.zentala.io/wiki/Driving-Control-Module-v1). Subsequent iterations have led to a more advanced and reliable [modular system architecture](https://github.com/zentala/desk.zentala.io/wiki#-smart-desk-modular-system-vision), that for now isn't fully designed and avaliable to construct or buy on the market. 
