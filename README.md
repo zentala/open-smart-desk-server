@@ -37,6 +37,16 @@ The project initially utilized the [Smart Desk Driving-Control Module v1](https:
 **Collaboration Call**
 We are looking for investors, data scientists, passionate electricians or hardware enthusiasts to collaborate on this exciting project. For more information on collaboration and potential profitability, please visit our [Business Strategy](https://github.com/zentala/desk.zentala.io/wiki/Business-Strategy-&-Collaboration).
 
+
+# Technological stack
+| Category    | Technology  |
+| :---------- | :---------- |
+| Environment | ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=black) &nbsp; ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-A22846?logo=raspberrypi&logoColor=white) |
+| Backend     | ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=nodedotjs&logoColor=white) &nbsp; ![npm](https://img.shields.io/badge/-npm-CB3837?logo=npm&logoColor=white) &nbsp; ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)|
+| Front-end   | ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white) &nbsp; ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white) &nbsp; ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black) |
+| Code Quality | ![EditorConfig](https://img.shields.io/badge/-EditorConfig-FEFEFE?logo=editorconfig&logoColor=black) |
+
+
 ## Software Setup
 
 To deploy the Smart Desk Server on your microcomputer and set up remote development with VSCode, follow these steps:
