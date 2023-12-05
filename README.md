@@ -1,4 +1,4 @@
-# Open Smart Desk [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
+# Open Smart Desk Server [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 
 ## Overview
 Make your height-adjustable desk smarter!
@@ -17,7 +17,15 @@ In development.
 ## Hardware
 It was running on [Smart Desk Driver Module v.1](https://github.com/zentala/desk.zentala.io/wiki/Smart-Desk-Driver-Module-v.1)
 
-## RPi Setup (required)
+
+
+## Software setup
+
+I am planning to make dockerfile from this steps.
+
+<details>
+<summary>Linux on RPi & Server Setup</summary>
+
 * Follow instruction to [flash SD card with Ubuntu Serwer 20.04 and configure WiFi without monitor](https://roboticsbackend.com/install-ubuntu-on-raspberry-pi-without-monitor/)
 * Clone this repo to the user home directory
 * Setup [passwordless sudo](https://phpraxis.wordpress.com/2016/09/27/enable-sudo-without-password-in-ubuntudebian/)
@@ -72,13 +80,10 @@ $ ln -s ~/open-smart-desk/conf/home/ubuntu/.zshrc ~/.zshrc
 $ sudo shutdown -r now
 ```
 
-## Project setup
-``` bash
-$ cd ~/open-smart-desk/
-$ poetry install 
-```
+</details>
 
-## Development setup on remote desktop
+<details>
+<summary>Development from remote desktop</summary>
 We are gonna setup you desktop to easlily work with the code on the remote RPi. That will be very usefull if you want to develop project code. **Bellow comands and instructions should be executed on your desktop (not RPi!).** 
 
 ### Easy SSH access
@@ -112,14 +117,5 @@ Try it.
   * On desk local you need to [allow to connect from remote](https://www.digitalocean.com/community/tutorials/how-to-configure-remote-access-for-mongodb-on-ubuntu-20-04); add `desk.local` instead of IP
   * Host: `desk.local`
 
-## TODO
-### Software
-* Add firewall setup
-* Speed up setup and development
-  * Creating ready to flash image
-  * Configuring RPi with Ansible
-* Visualising time spent working
+</details>
 
-### Hardware
-* New enclousure for the electronic with smaller power supply
-* Physical controller with buttons and LCD connected to the RPi with USB 
