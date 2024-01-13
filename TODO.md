@@ -15,3 +15,7 @@ https://classic.yarnpkg.com/blog/2017/08/02/introducing-workspaces/
 -   **Front-End**: Vsualize work, break and standing time.
 -   ""Czujniki wykywania obesncoi**: bedziemy eksperymentowac z roznymi algorytmami i fzycznimi konstukacjmi aby znalexc te zapeniajaca najwysza skutecznosc
 -   **Hardware**: Design a new enclosure and develop a physical controller.
+
+# Removed from package.json in server, find repacement:
+    "i2c-bus": "^5.2.1",
+    "onoff": "^6.0.1",

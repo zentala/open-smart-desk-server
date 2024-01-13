@@ -1,11 +1,12 @@
 {
   "name": "open-smart-desk",
-  "version": "0.2.0",
+  "version": "0.2",
   "description": "Smart height-adjustable desk server",
   "main": "server",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server",
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,14 +20,13 @@
   },
   "homepage": "https://github.com/zentala/open-smart-desk#readme",
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "awilix": "^4.3.3",
+    "awilix": "^10.0.1",
     "express": "^4.17.1",
-    "i2c-bus": "^5.2.1",
-    "mongoose": "5.11.15",
-    "onoff": "^6.0.1",
     "socket.io": "^3.1.2",
     "vl53l0x": "^2.0.0",
     "winston": "^3.3.3"
